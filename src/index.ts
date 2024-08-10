@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
+import depositRoutes from "./routes/depositRoutes";
 
 dotenv.config();
 
@@ -13,8 +14,9 @@ app.get("/", (req, res) => {
   res.send("API de Investimento em Bitcoins");
 });
 
+app.use("/api/auth", authRoutes);
+app.use("/api/deposit", depositRoutes);
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
-
-app.use("/api/auth", authRoutes);
